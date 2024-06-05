@@ -26,9 +26,8 @@ def adam(f, gradf, x0, maxit, eps=0.001, beta1=0.9, beta2=0.999, delta=1e-8, thr
         history['weights'].append(x0)  # Convert to numpy for history storage
         history['loss'].append(y)
 
-        pbar.set_postfix(loss=f"{y:.3f}")
+        pbar.set_postfix(loss=f"{y:.3f}", grad = f"({dfx[0]:.3f}, {dfx[1]:.3f})", x=f"({x0[0]:.3f}, {x0[1]:.3f})")
         x0 += dtheta
-        
         if jnp.allclose(gradf(x0), threshold):
             break
             

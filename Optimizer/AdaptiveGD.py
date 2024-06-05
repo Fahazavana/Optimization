@@ -21,7 +21,7 @@ def agd(f, gradf, x, maxit, lr, threshold=1e-8):
                 
         history['weights'].append(x.copy())
         history['loss'].append(y)
-        pbar.set_postfix(loss=f"{y:.3f}")
+        pbar.set_postfix(loss=f"{y:.3f}", grad = f"({dfx[0]:.3f}, {dfx[1]:.3f})", x=f"({x0[0]:.3f}, {x0[1]:.3f})")
         if jnp.allclose(dfx, threshold):
             break
         x -= lr*dfx

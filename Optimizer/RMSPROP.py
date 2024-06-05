@@ -16,9 +16,9 @@ def rmsprop(f, gradf, x0, maxit, eps=1e-3, rho=1e-3, delta=1e-8, threshold=1e-5)
         dtheta = - (eps / (jnp.sqrt(r + delta))) * dfx
         history['weights'].append(x0)  # Convert to numpy for history storage
         history['loss'].append(y)
-        pbar.set_postfix(loss=f"{y:.3f}")
         x0 += dtheta
         
+        pbar.set_postfix(loss=f"{y:.3f}", grad = f"({dfx[0]:.3f}, {dfx[1]:.3f})", x=f"({x0[0]:.3f}, {x0[1]:.3f})")
         if jnp.allclose(gradf(x0), threshold):
             break
             
