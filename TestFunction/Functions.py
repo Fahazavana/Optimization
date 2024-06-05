@@ -11,7 +11,7 @@ def rastrigin(x):
 
 
 def sphere(x):
-    return jnp.sum(x**2)
+    return jnp.sum(x**2, axis=-1)
 
 def ackley(x):
     """
@@ -21,8 +21,8 @@ def ackley(x):
     b = 0.2
     c = 2 * jnp.pi
 
-    sum_squares = jnp.sum(x**2, axis=1)
-    sum_cos = jnp.sum(jnp.cos(c * x), axis=1)
+    sum_squares = jnp.sum(x**2, axis=-1)
+    sum_cos = jnp.sum(jnp.cos(c * x), axis=-1)
 
     A = -a * jnp.exp(-b * jnp.sqrt(0.5 * sum_squares))
     B = -jnp.exp(0.5 * sum_cos)
