@@ -1,17 +1,14 @@
-import jax
-import jax.numpy as jnp
-import numpy as np
-from tqdm import trange
-from tqdm import tqdm
+import numpy as jnp
+from tqdm.auto import tqdm, trange
 
-def newtonpinv(f, gradf, hessf, x0, maxit):
+def newtonpinv(f, gradf, hessf, x0, maxit, threshold=1e-8):
     """
         Newton's methods, where we replace the inverse of the Hessian by
         its Pseudo-inverse.
     """
-
+    threshold *= jnp.ones_like(x0)
     history = {'weights': [x0], 'loss': [f(x0)]}
-    pbar = trange(maxit, desc="Run Newton Pinv.", ascii=' =')
+    pbar = trange(maxit, desc="Newton's Pinv.", ascii=' =')
     for k in pbar:
         
         
@@ -20,9 +17,13 @@ def newtonpinv(f, gradf, hessf, x0, maxit):
         dfx0 = gradf(x0)
         hfx0 = hessf(x0)
         h = hfx0 + 1e-18 * jnp.eye(x0.size)
+        
         x0 -= jnp.dot(jnp.linalg.pinv(h, hermitian=True), dfx0)
         pbar.set_postfix(loss=f"{y:.3f}")
         history['weights'].append(x0.copy())
         history['loss'].append(f(x0)) 
-        
+        if jnp.allclose(gradf(x0), threshold):
+            break
+    history['loss'] = jnp.array(history['loss'])
+    history['weights'] = jnp.array(history['weights'])
     return history

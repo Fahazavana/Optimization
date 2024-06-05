@@ -8,8 +8,9 @@ def agd(f, gradf, x, maxit, lr, threshold=1e-8):
     """
         Adaptive Gradient descent rules
     """
+    threshold *= jnp.ones_like(x0)
     history = {'loss': [], 'weights': []}
-    pbar = trange(maxit, desc="Run GD")
+    pbar = trange(maxit, desc="Adaptive GD")
     for k in pbar:
         y = f(x)
         dfx = gradf(x)
