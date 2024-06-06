@@ -1,5 +1,16 @@
+
 # Optimization
-A collection of some Optimization algoritms:
+
+A collection of some Optimization algoritms
+
+## Requirements:
+* JAX
+* Numpy
+* MMatplotlib
+* tqdm
+
+## Available Algorithms
+
 * Vanilla Gradient Descent
 * Adaptive steplength Gradient Descent
 * Vanilla Newton's methods
@@ -9,3 +20,8 @@ A collection of some Optimization algoritms:
 * Adagrad
 * Momentum Gradient descent
 * RMSProp
+
+## Available Test Functions
+* Rastrigin
+* Sphere
+* Ackley

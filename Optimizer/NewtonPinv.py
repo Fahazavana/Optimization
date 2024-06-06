@@ -1,5 +1,5 @@
 import numpy as jnp
-from tqdm.auto import tqdm, trange
+from tqdm import tqdm, trange
 
 def newtonpinv(f, gradf, hessf, x0, maxit, threshold=1e-8):
     """

@@ -1,7 +1,7 @@
 import jax
 import jax.numpy as jnp
 import numpy as np
-from tqdm.auto import tqdm, trange
+from tqdm import tqdm, trange
 
 def adam(f, gradf, x0, maxit, eps=0.001, beta1=0.9, beta2=0.999, delta=1e-8, threshold=1e-5):
     threshold *= jnp.ones_like(x0)

@@ -1,7 +1,7 @@
 import jax
 import jax.numpy as jnp
 import numpy as np
-from tqdm.auto import tqdm, trange
+from tqdm import tqdm, trange
 
 def gd(f, gradf, x0, maxit, lr, threshold=1e-5):
     """

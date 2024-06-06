@@ -1,7 +1,7 @@
 import jax
 import jax.numpy as jnp
 import numpy as np
-from tqdm.auto import tqdm, trange
+from tqdm import tqdm, trange
 
 
 def agd(f, gradf, x, maxit, lr, threshold=1e-8):
@@ -11,7 +11,7 @@ def agd(f, gradf, x, maxit, lr, threshold=1e-8):
     stop =0
     threshold *= jnp.ones_like(x)
     history = {'loss': [], 'weights': []}
-    pbar = trange(maxit, desc="Adaptive GD")
+    pbar = trange(maxit, desc="Adaptive GD", ascii=' =')
     for k in pbar:
         y = f(x)
         dfx = gradf(x)
