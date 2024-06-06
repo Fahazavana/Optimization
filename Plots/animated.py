@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np 
 import jax.numpy as jnp
+from matplotlib.animation import FuncAnimation
 
 def animed_plot(history, f, fig):
     xy = history['weights']
@@ -9,8 +10,8 @@ def animed_plot(history, f, fig):
     xmax = abs(max(xy[:,0]))
     ymax = abs(max(xy[:,1]))
     
-    x = np.linspace(xmax-0.5, xmax+0.5, 100)
-    y = np.linspace(ymax-0.5, ymax+0.5, 100)
+    x = np.linspace(-xmax-0.5, xmax+0.5, 100)
+    y = np.linspace(-ymax-0.5, ymax+0.5, 100)
     X, Y = np.meshgrid(x, y)
     Z = f(jnp.stack([X, Y]))
     Z = Z.reshape(X.shape)
@@ -38,4 +39,4 @@ def animed_plot(history, f, fig):
         line3d[0].set_ydata(xy[:frame, 1])
         line3d[0].set_3d_properties(zz[:frame])
         return line2d, line3d
-    return animation.FuncAnimation(fig=fig, func=update, frames=30, interval=30)
+    return FuncAnimation(fig=fig, func=update, frames=30, interval=30)
