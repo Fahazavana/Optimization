@@ -6,8 +6,10 @@ A collection of some Optimization algoritms
 ## Requirements:
 * JAX
 * Numpy
-* MMatplotlib
+* Matplotlib
 * tqdm
+* ipywidget
+* impl
 
 ## Available Algorithms
 
