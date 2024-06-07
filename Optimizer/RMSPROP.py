@@ -1,7 +1,7 @@
 import jax
 import jax.numpy as jnp
 import numpy as np
-from tqdm import tqdm, trange
+from tqdm.auto import tqdm, trange
 
 def rmsprop(f, gradf, x0, maxit, eps=1e-3, rho=1e-3, delta=1e-8, threshold=1e-5):
     threshold *= jnp.ones_like(x0)

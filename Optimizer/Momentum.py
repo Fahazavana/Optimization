@@ -1,7 +1,7 @@
 import jax
 import jax.numpy as jnp
 import numpy as np
-from tqdm import tqdm, trange
+from tqdm.auto import tqdm, trange
 
 def momentum(f, gradf, x0, maxit, lr, beta=0.9, threshold=1e-5):
     """
