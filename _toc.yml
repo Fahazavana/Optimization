@@ -2,7 +2,12 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: README
+root: Introduction
 chapters:
+# - file: zero
+- file: 01_basic
+- file: 02_zero
+- file: 03_first
+- file: 04_second
 - file: Rastrigin
 - file: examples

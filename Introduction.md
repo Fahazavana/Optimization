@@ -1,5 +1,5 @@
 
-# Optimization
+# Introduction
 
 This repository provide a collection  of optimization algorithm with brief overview and short explanation. It encompas zero, first and second order methods.
 
